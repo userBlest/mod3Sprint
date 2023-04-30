@@ -48,23 +48,37 @@ window.addEventListener('DOMContentLoaded', function (e) {
 		}
 	})
 
-	//Al tocar botón, recuperar información del localStorage
+//Al tocar botón, recuperar información del localStorage
 	let boton = document.getElementById('boton')
 	boton.addEventListener("click", function () {
-		//recuperar información del nombre y mostrarlo
+//recuperar información del nombre y mostrarlo
 		escrituraJSON = document.getElementById('nombreForm')
 		escrituraJSON.setAttribute('value', localStorage.getItem('nombre'))
-
+//recuperar información del apellido y mostrarlo
+		escrituraJSON = document.getElementById('apellidoForm')
+		escrituraJSON.setAttribute('value', localStorage.getItem('apellido'))
+//recuperar información del sueldo y mostrarlo
+		escrituraJSON = document.getElementById('sueldoForm')
+		escrituraJSON.setAttribute('value', localStorage.getItem('sueldo'))
 	})
 })
 
 let guardarcambios = () => {
-	//buscar y guardar nombre
+//buscar y guardar nombre
 	let nombre = document.getElementById('nombre').value;
 	console.log("El nombre es ->", nombre)
 	localStorage.setItem('nombre', nombre)
-	let JSON = console.log("El nombre sacado del localStorage ->", localStorage.getItem('nombre'));
+	let JSON1 = console.log("El nombre sacado del localStorage ->", localStorage.getItem('nombre'));
 
-	//buscar y guardar apellido
+// buscar y guardar apellido
+	let apellido = document.getElementById('apellido').value;
+	console.log("El nombre es ->", apellido)
+	localStorage.setItem('apellido', apellido)
+	let JSON2 = console.log("El apellido sacado del localStorage ->", localStorage.getItem('apellido'));
+	
+// buscar y guardar sueldo
+	let sueldo = document.getElementById('sueldo').value;
+	console.log("El nombre es ->", sueldo)
+	localStorage.setItem('sueldo', sueldo)
+	let JSON3 = console.log("El sueldo sacado del localStorage ->", localStorage.getItem('sueldo'));
 }
-
