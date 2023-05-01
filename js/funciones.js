@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', function (e) {
 		year = date.getFullYear(),
 		month = date.getMonth(),
 		day = date.getDate(),
-		monthredefinido = month.toString,
+		monthredefinido = month.toString(),
 		query = document.querySelector('#fechanacimiento'),
 		query2 = document.querySelector('#ingreso');
 
@@ -174,20 +174,37 @@ let guardarcambios = () => {
 	documentSueldoFinal.setAttribute('value', sueldofinal)
 
 	//Operación para saber la permanencia del usuario en la empresa
-	let fechaIngresada = localStorage.getItem('fechaIng');
-	fechaIngresada = new Date(fechaIngresada);
-	let fechaHoy = new Date();
-	const yearSelect = fechaHoy.getFullYear() - fechaIngresada.getFullYear();
-	const monthSelect = fechaHoy.getMonth() - fechaIngresada.getMonth();
-	const daysSelect = (fechaHoy.getDate() - fechaIngresada.getDate());
-	const ress = `${localStorage.getItem('nombre')} lleva una permanencia de ${yearSelect} años, ${monthSelect} meses y ${daysSelect} días`;
-	console.log(ress)
-	console.log("Año seleccionado", fechaHoy.getFullYear())
-	console.log("Año actual", fechaIngresada.getFullYear())
+
+	//fecha seleccionada
+	const fechaselect = new Date(localStorage.getItem('fechaIng'));
+
+	//obtener fecha actual
+	const now = new Date();
+
+	//obtener distancias entre ambas fechas
+	let distance = now.getTime() - fechaselect;
+
+	//calculo de años
+	const years = now.getFullYear() - fechaselect.getFullYear();
+
+	// Calcular la diferencia en milisegundos entre las dos fechas
+	var diferencia = now.getTime() - fechaselect;
+
+	// Convertir la diferencia a días
+	var dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+
+	// Calcular la cantidad de años completos
+	var anos = Math.floor(dias / 365);
+
+	// Calcular la cantidad de meses completos
+	var meses = Math.floor(((dias % 365) / 30));
+
+	// Calcular los días restantes
+	var diasRestantes = dias - (anos * 365) - (meses * 30);
+
+	const ress = `${localStorage.getItem('nombre')} lleva una permanencia de days años ${anos}, ${meses} meses y ${diasRestantes} días`;
 
 	//Escribir tiempo de permanencia de acuerdo a operación
 	let tiempoPerm = document.getElementById('tiempoPermanencia')
 	tiempoPerm.setAttribute('value', ress)
-
 }
-
