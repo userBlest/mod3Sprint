@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', function (e) {
 	})
 
 
-	// FECHA TOPE HOY EN FECHAS
+// FECHA TOPE HOY EN FECHAS
 	let date = new Date(),
 		year = date.getFullYear(),
 		month = date.getMonth(),
@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', function (e) {
 	query2.setAttribute('max', `${fecha}`)
 	console.log(fecha);
 
-	//SI NO TIENE CARGAS, DESHABILITACIÓN DE INPUT CANTIDAD DE CARGAS
+//SI NO TIENE CARGAS, DESHABILITACIÓN DE INPUT CANTIDAD DE CARGAS
 	let cargas = document.getElementById('carga')
 	cargas.addEventListener("change", function (e) {
 		opcion = e.target.value
@@ -60,8 +60,12 @@ window.addEventListener('DOMContentLoaded', function (e) {
 //recuperar información del sueldo y mostrarlo
 		escrituraJSON = document.getElementById('sueldoForm')
 		escrituraJSON.setAttribute('value', localStorage.getItem('sueldo'))
-	})
+	})	
+//recuperar información de la verificacion asignacion y mostrarlo
+		escrituraJSON = document.getElementById('cargaForm')
+		escrituraJSON.setAttribute('value', localStorage.getItem('carga'))
 })
+
 
 let guardarcambios = () => {
 //buscar y guardar nombre
@@ -81,4 +85,77 @@ let guardarcambios = () => {
 	console.log("El nombre es ->", sueldo)
 	localStorage.setItem('sueldo', sueldo)
 	let JSON3 = console.log("El sueldo sacado del localStorage ->", localStorage.getItem('sueldo'));
+
+// buscar y guardar verificacion cargas
+	let carga = document.getElementById('carga').value;
+	console.log("Corresponde asignacion ->", carga)
+	localStorage.setItem('carga', carga)
+	let JSON4 = console.log("Corresponde carga ->", localStorage.getItem('carga'));
 }
+
+
+
+
+
+// FUNCION PARA CALCULO DE ASIGNACION Y SUELDO FINAL
+
+function Afiliado(nombre, apellido, sueldoAct, sueldoSem, carga, nCargas) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.sueldo = sueldo;
+    this.sueldoSem = sueldoSem;
+    this.carga = carga;
+    this.nCargas = nCargas;
+
+    this.beneficiario = function () {
+        return `El beneficiario es ${this.nombre} ${this.apellido}`
+    }
+
+    this.sueldoActual = function () {
+        return `El sueldo de ${this.nombre} ${this.apellido} es ${formatter.format(this.sueldo)}`
+    }
+
+    this.asignacion = function () {
+        if (!nCargas) {
+            return `No calificas para la asignacion familiar`
+        }
+        else if (sueldoSem <= 429899) {
+            return `Su asignacion familiar es de $16,828 por carga en total recibes ${formatter.format(16828 * this.nCargas)}`
+        }
+        else if (sueldoSem > 429899 && sueldoSem <= 627913) {
+            return `Su asignacion familiar es de $10,327 por carga en total recibes ${formatter.format(10327 * this.nCargas)}`
+        }
+        else if (sueldoSem > 627913 && sueldoSem <= 979330) {
+            return `Su asignacion familiar es de $3,264 por carga en total recibes ${formatter.format(3264 * this.nCargas)}`
+        }
+        else if (sueldoSem > 979330) {
+            return `No calificas para la asignacion familiar`
+        }
+    }
+
+    this.sueldoFinal = function () {
+        if (!nCargas) {
+            return `Su sueldo final es ${formatter.format(this.sueldo)}`
+        }
+        else if (sueldoSem <= 429899) {
+            return `Su sueldo final es ${formatter.format(this.sueldo + (16828 * this.nCargas))}`
+        }
+        else if (sueldoSem > 429899 && sueldoSem <= 627913) {
+            return `Su sueldo final es ${formatter.format(this.sueldo + (10327 * this.nCargas))}`
+        }
+        else if (sueldoSem > 627913 && sueldoSem <= 979330) {
+            return `Su sueldo final es ${formatter.format(this.sueldo + (3264 * this.nCargas))}`
+        }
+        else if (sueldoSem > 979330) {
+            return `Su sueldo final es ${formatter.format(this.sueldo)}`
+        }
+    }
+}
+
+console.log('====== AFILIADO 5 =======')
+let Afiliado6 = new Afiliado('Gabriel', 'Martinez', 100000, 100000, false, 0)
+console.log(Afiliado6)
+console.log(Afiliado6.beneficiario())
+console.log(Afiliado6.sueldoActual())
+console.log(Afiliado6.asignacion())
+console.log(Afiliado6.sueldoFinal())
