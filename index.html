@@ -15,7 +15,7 @@
 
 <body class="bg-light">
 
-<!-- BARRA NAVEGACION -->
+  <!-- BARRA NAVEGACION -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand"></a>
@@ -42,20 +42,20 @@
     </div>
   </nav>
 
-<!-- TITULO FORMULARIO -->
+  <!-- TITULO FORMULARIO -->
   <div class="container my-5">
     <h3>Formulario de registro</h3>
-<!-- FORMULARIO -->
+    <!-- FORMULARIO -->
     <form class="g-3">
       <div class="row">
-<!-- NOMBRE -->
+        <!-- NOMBRE -->
         <div class="col-md-6">
           <input type="text" class="form-control" id="nombre" placeholder="Nombre" value="" required>
           <div class="valid-feedback">
             Por favor ingrese su nombre
           </div>
         </div>
-<!-- APELLIDO -->
+        <!-- APELLIDO -->
         <div class="col-md-6">
           <input type="text" class="form-control" id="apellido" placeholder="Apellido" value="" required>
           <div class="valid-feedback">
@@ -63,7 +63,7 @@
           </div>
         </div>
       </div>
-<!-- FECHA DE NACIMIENTO -->
+      <!-- FECHA DE NACIMIENTO -->
       <div class="row">
         <div class="col-md-12 p-3">
           <label for="validationServerUsername" class="form-label">Fecha de nacimiento</label>
@@ -77,7 +77,7 @@
           </div>
         </div>
       </div>
-<!-- VERIFICACION COLABORADOR -->
+      <!-- VERIFICACION COLABORADOR -->
       <div class="row p-3">
         <div class="col-md-12">
           <label for="validationServer04" class="form-label">Es colaborador</label>
@@ -90,7 +90,7 @@
           </div>
         </div>
       </div>
-<!-- FECHA DE INGRESO A LA EMPRESA -->
+      <!-- FECHA DE INGRESO A LA EMPRESA -->
       <div class="row">
         <div class="col-md-12">
           <label for="validationServerUsername" class="form-label">Fecha de Ingreso</label>
@@ -104,14 +104,14 @@
           </div>
         </div>
       </div>
-<!-- SUELDO ACTUAL -->
+      <!-- SUELDO ACTUAL -->
       <div class="row p-4">
         <div class="col-md-6">
           <input type="text" class="form-control" id="sueldo" value="" placeholder="Sueldo actual" required>
           <div id="validationServer05Feedback" class="invalid-feedback">
           </div>
         </div>
-<!-- SUELDO SEMESTRE ANTERIOR -->
+        <!-- SUELDO SEMESTRE ANTERIOR -->
         <div class="col-md-6">
           <input type="text" class="form-control" id="semestreSem" placeholder="Sueldo del semestre anterior"
             aria-describedby="validationServer05Feedback" required>
@@ -119,7 +119,7 @@
           </div>
         </div>
       </div>
-<!-- VERIFICACION CARGAS -->
+      <!-- VERIFICACION CARGAS -->
       <div class="row p-3">
         <div class="col-md-4">
           <label for="carga" class="form-label">Tiene cargas familiares?</label>
@@ -131,7 +131,7 @@
             Por favor seleccione una opcion
           </div>
         </div>
-<!-- CANTIDAD DE CARGAS -->
+        <!-- CANTIDAD DE CARGAS -->
         <div class="col-md-8">
           <input type="number" class="form-control " id="cantidadCargas" placeholder="Cantidad de cargas familiar"
             aria-describedby="validationServer03Feedback" max="20" min="0" required>
@@ -140,7 +140,7 @@
           </div>
         </div>
       </div>
-<!-- BOTON DEL FORMULARIO -->
+      <!-- BOTON DEL FORMULARIO -->
       <div class="d-flex justify-content-center align-items-center mt-5">
         <button type="button" id="boton" class="btn btn-primary" data-bs-toggle="modal" onclick="guardarcambios()"
           data-bs-target="#ficha">
@@ -150,14 +150,14 @@
     </form>
   </div>
 
-<!-- MODAL -->
+  <!-- MODAL -->
   <div class="modal fade" id="ficha" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Ficha trabajador</h5>
         </div>
-<!-- MODAL NOMBRE -->
+        <!-- MODAL NOMBRE -->
         <div class="modal-body">
           <div class="container-fluid">
             <div class="row">
@@ -165,43 +165,41 @@
               <input class="form-control" id="nombreForm" type="text" value="" aria-label="readonly input example"
                 readonly>
             </div>
-<!-- MODAL APELLIDO -->
+            <!-- MODAL APELLIDO -->
             <div class="row">
               <div class="col-md-6 p-1">Apellido</div>
-              <input class="form-control" id="apellidoForm" type="text" value="" aria-label="readonly input example" readonly>
+              <input class="form-control" id="apellidoForm" type="text" value="" aria-label="readonly input example"
+                readonly>
             </div>
-<!-- MODAL SUELDO -->
+            <!-- MODAL SUELDO -->
             <div class="row">
               <div class="col-md-6 p-1">Sueldo actual</div>
-              <input class="form-control" id="sueldoForm" type="number" value="" aria-label="readonly input example" readonly>
+              <input class="form-control" id="sueldoForm" type="number" value="" aria-label="readonly input example"
+                readonly>
             </div>
-<!-- MODAL ASIGNACION -->
+            <!-- MODAL ASIGNACION -->
             <div class="row">
-              <div class="col-md-12 p-2">¿Corresponde asignación?</div>
+              <div class="col-md-12 p-1">Corresponde asignación</div>
+              <input class="form-control" id="corrAsig" type="text" value="" aria-label="readonly input example"
+                readonly>
             </div>
-              <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDisabled" id="cargaForm" checked
-                disabled>
-              <label class="form-check-label" for="flexRadioDisabled">
-                Si
-              </label>
-            </div>
-<!-- MODAL MONTO ASIGNACION -->
+            <!-- MODAL MONTO ASIGNACION -->
             <div class="row">
               <div class="col-md-12 p-2">Monto asignación familiar</div>
-              <input class="form-control" type="text" value="" aria-label="readonly input example" readonly>
+              <input class="form-control" id="MontoAsig" type="text" value="" aria-label="readonly input example"
+                readonly>
             </div>
-<!-- MODAL SUELDO FINAL -->
+            <!-- MODAL SUELDO FINAL -->
             <div class="row">
               <div class="col-md-12 p-1">Sueldo final</div>
-              <input class="form-control" type="text" value="" aria-label="readonly input example" readonly>
+              <input class="form-control" id="sueldoFin" type="text" value="" aria-label="readonly input example"
+                readonly>
             </div>
-<!-- MODAL PERMANENCIA-->
+            <!-- MODAL PERMANENCIA-->
             <div class="row">
               <div class="col-md-12 p-1">Tiempo de permanencia</div>
-              <input class="form-control" type="text" value=""
+              <input class="form-control" id="tiempoPermanencia" type="text" value=""
                 aria-label="readonly input example" readonly>
-                
             </div>
           </div>
         </div>
@@ -212,7 +210,7 @@
     </div>
   </div>
 
-<script src="js/funciones.js"></script>
+  <script src="js/funciones.js"></script>
 </body>
 
 </html>
