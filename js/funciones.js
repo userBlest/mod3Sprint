@@ -27,11 +27,21 @@ window.addEventListener('DOMContentLoaded', function (e) {
 		query = document.querySelector('#fechanacimiento'),
 		query2 = document.querySelector('#ingreso');
 
+	let mes;
 	if (monthredefinido.length == 1) {
 		fecha = (`${year}-0${month + 1}-${day}`);
+		mes = `0${month + 1}`
 	} else {
-		fecha = (`${year}-${month + 1}-${day}`)
+		fecha = (`${year}-${month + 1}-${day}`);
+		mes = `${month + 1}`
 	}
+
+	if (day.toString().length == 1) {
+		fecha = (`${year}-${mes}-0${day}`);
+	} else {
+		fecha = (`${year}-${mes}-${day}`);
+	}
+
 	query.setAttribute('max', `${fecha}`)
 	query2.setAttribute('max', `${fecha}`)
 	console.log(fecha);
